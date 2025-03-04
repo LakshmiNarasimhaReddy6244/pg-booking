@@ -7,23 +7,54 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            background: url('https://source.unsplash.com/1600x900/?room,interior') no-repeat center center/cover;
+            background: linear-gradient(135deg, #1e3a8a, #33ea36);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: red;
         }
         .glass-effect {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         input, button {
             transition: all 0.3s ease;
         }
+        input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: rgb(207, 0, 0);
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+        }
         input:focus {
             outline: none;
-            border-color: #2563EB;
-            box-shadow: 0 0 8px rgba(37, 99, 235, 0.5);
+            border-color: #facc15;
+            box-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
+            background: rgba(255, 255, 255, 0.3);
+        }
+        button {
+            background: linear-gradient(90deg, #facc15, #f97316);
+            color: rgb(200, 0, 0);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            width: 100%;
         }
         button:hover {
             transform: scale(1.05);
+            background: linear-gradient(90deg, #f97316, #ef4444);
+        }
+        #message-box, #success-message {
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
     <script>
@@ -123,6 +154,23 @@
             <div>
                 <label class="block text-white font-semibold">Enrollment Number</label>
                 <input type="text" name="enrollment" class="w-full p-3 border rounded-lg bg-white bg-opacity-80" placeholder="Enrollment Number (e.g., A70405223040)" required onfocus="showMessage(this)" maxlength="12" oninput="this.value = this.value.replace(/[^A-Z0-9]/g, '');">
+            </div>
+            <div class="mb-4">
+                <label class="block font-semibold">Sharing Type</label>
+                <select name="sharing" required>
+                    <option value="">Select Sharing Type</option>
+                    <option value="Single">Single Sharing</option>
+                    <option value="Double">Double Sharing</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block font-semibold">Time Period</label>
+                <select name="time_period" required>
+                    <option value="">Select Time Period</option>
+                    <option value="1 Month">1 Month</option>
+                    <option value="6 Months">6 Months</option>
+                    <option value="1 Year">1 Year</option>
+                </select>
             </div>
             <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700">Book Now</button>
         </form>
